@@ -60,8 +60,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -433,25 +431,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // Ad start must be done as the result of a user action on mobile.
 	      // For more details, read https://developers.google.com/interactive-media-ads/docs/sdks/html5/mobile_video
 	      if (!this._autostart || _clappr.Browser.isMobile) {
-	        var _ret = function () {
-	          var startAd = function startAd(e) {
-	            try {
-	              _this5._clickOverlay.removeEventListener('click', startAd, false);
-	              e.preventDefault();
-	              e.stopPropagation();
-	            } catch (err) {}
-	            _this5._$clickOverlay.hide();
-	            _this5._playAds();
-	          };
-	          _this5._setPlayIcon();
-	          _this5._clickOverlay.addEventListener('click', startAd, false);
+	        var startAd = function startAd(e) {
+	          try {
+	            _this5._clickOverlay.removeEventListener('click', startAd, false);
+	            e.preventDefault();
+	            e.stopPropagation();
+	          } catch (err) {}
+	          _this5._$clickOverlay.hide();
+	          _this5._playAds();
+	        };
+	        this._setPlayIcon();
+	        this._clickOverlay.addEventListener('click', startAd, false);
 
-	          return {
-	            v: void 0
-	          };
-	        }();
-
-	        if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+	        return;
 	      }
 
 	      // Otherwise, autostart ad display
@@ -512,7 +504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this._remove();
 	      this._$adContainer = (0, _clappr.$)("<div />").addClass("preroll-container").attr('data-preroll', '');
 	      this._$clickOverlay = (0, _clappr.$)("<div />").addClass("preroll-overlay").attr('data-preroll', '');
-	      this._$clickOverlay.append(_loader2.default).find('svg path').css('fill', '#fff');
+	      this._$clickOverlay.append(_loader2.default);
 	      this._$clickOverlay.find('svg').addClass('preroll-overlay-icon').attr('data-preroll', '');
 	      this.$el.append(this._$adContainer);
 	      this.$el.append(this._$clickOverlay);
@@ -721,6 +713,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	process.removeListener = noop;
 	process.removeAllListeners = noop;
 	process.emit = noop;
+	process.prependListener = noop;
+	process.prependOnceListener = noop;
+
+	process.listeners = function (name) { return [] }
 
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');
@@ -899,7 +895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<svg version=\"1.1\" id=\"svg-spinner\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 80 80\" xml:space=\"preserve\"><path id=\"spinner\" fill=\"#D43B11\" d=\"M40,72C22.4,72,8,57.6,8,40C8,22.4, 22.4,8,40,8c17.6,0,32,14.4,32,32c0,1.1-0.9,2-2,2 s-2-0.9-2-2c0-15.4-12.6-28-28-28S12,24.6,12,40s12.6, 28,28,28c1.1,0,2,0.9,2,2S41.1,72,40,72z\"><animateTransform attributeType=\"xml\" attributeName=\"transform\" type=\"rotate\" from=\"0 40 40\" to=\"360 40 40\" dur=\"0.6s\" repeatCount=\"indefinite\"></animateTransform></path></svg>"
+	module.exports = "<svg version=\"1.1\" id=\"svg-spinner\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 80 80\" xml:space=\"preserve\"></svg>"
 
 /***/ }
 /******/ ])
