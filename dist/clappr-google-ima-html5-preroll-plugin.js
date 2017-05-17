@@ -325,10 +325,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var adsRequest = new google.ima.AdsRequest();
 	      adsRequest.adTagUrl = this._tag;
-	      adsRequest.linearAdSlotWidth = this._contentElement.offsetWidth;
-	      adsRequest.linearAdSlotHeight = this._contentElement.offsetHeight;
-	      adsRequest.nonLinearAdSlotWidth = this._contentElement.offsetWidth;
-	      adsRequest.nonLinearAdSlotHeight = this._contentElement.offsetHeight;
+	      adsRequest.linearAdSlotWidth = '100%';
+	      adsRequest.linearAdSlotHeight = '100%';
+	      adsRequest.nonLinearAdSlotWidth = '100%';
+	      adsRequest.nonLinearAdSlotHeight = '100%';
 
 	      // requestAds() trigger _onAdsManagerLoaded() or _onAdError()
 	      adsLoader.requestAds(adsRequest);
