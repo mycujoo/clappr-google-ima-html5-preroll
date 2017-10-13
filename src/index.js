@@ -216,7 +216,7 @@ export default class ClapprGoogleImaHtml5PrerollPlugin extends UICorePlugin {
     this._adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, (e) => {
       this._onAdError(e)
     })
-    
+
     this._adsManager.addEventListener(google.ima.AdEvent.Type.CONTENT_RESUME_REQUESTED, () => {
       this._imaEvent('content_resume_requested')
       this._playVideoContent()
@@ -359,7 +359,7 @@ export default class ClapprGoogleImaHtml5PrerollPlugin extends UICorePlugin {
     this._remove()
     this._$adContainer = $("<div />").addClass("preroll-container").attr('data-preroll', '')
     this._$clickOverlay = $("<div />").addClass("preroll-overlay").attr('data-preroll', '')
-    this._$clickOverlay.append(loadSvg).find('svg path').css('fill', '#fff')
+    this._$clickOverlay.append(loadSvg)
     this._$clickOverlay.find('svg').addClass('preroll-overlay-icon').attr('data-preroll', '')
     this.$el.append(this._$adContainer)
     this.$el.append(this._$clickOverlay)
