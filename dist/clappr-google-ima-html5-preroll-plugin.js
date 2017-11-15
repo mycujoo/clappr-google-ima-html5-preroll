@@ -353,7 +353,7 @@ process.umask = function() { return 0; };
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = "<svg version=\"1.1\" id=\"svg-spinner\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 80 80\" xml:space=\"preserve\"><path id=\"spinner\" fill=\"#D43B11\" d=\"M40,72C22.4,72,8,57.6,8,40C8,22.4, 22.4,8,40,8c17.6,0,32,14.4,32,32c0,1.1-0.9,2-2,2 s-2-0.9-2-2c0-15.4-12.6-28-28-28S12,24.6,12,40s12.6, 28,28,28c1.1,0,2,0.9,2,2S41.1,72,40,72z\"><animateTransform attributeType=\"xml\" attributeName=\"transform\" type=\"rotate\" from=\"0 40 40\" to=\"360 40 40\" dur=\"0.6s\" repeatCount=\"indefinite\"></animateTransform></path></svg>"
+module.exports = "<svg version=\"1.1\" id=\"svg-spinner\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 80 80\" xml:space=\"preserve\"></svg>"
 
 /***/ }),
 /* 5 */
@@ -628,10 +628,10 @@ var ClapprGoogleImaHtml5PrerollPlugin = function (_UICorePlugin) {
 
       var adsRequest = new google.ima.AdsRequest();
       adsRequest.adTagUrl = this._tag;
-      adsRequest.linearAdSlotWidth = this._contentElement.offsetWidth;
-      adsRequest.linearAdSlotHeight = this._contentElement.offsetHeight;
-      adsRequest.nonLinearAdSlotWidth = this._contentElement.offsetWidth;
-      adsRequest.nonLinearAdSlotHeight = this._contentElement.offsetHeight;
+      adsRequest.linearAdSlotWidth = '100%';
+      adsRequest.linearAdSlotHeight = '100%';
+      adsRequest.nonLinearAdSlotWidth = '100%';
+      adsRequest.nonLinearAdSlotHeight = '100%';
 
       // requestAds() trigger _onAdsManagerLoaded() or _onAdError()
       adsLoader.requestAds(adsRequest);
@@ -805,7 +805,7 @@ var ClapprGoogleImaHtml5PrerollPlugin = function (_UICorePlugin) {
       this._remove();
       this._$adContainer = (0, _clappr.$)("<div />").addClass("preroll-container").attr('data-preroll', '');
       this._$clickOverlay = (0, _clappr.$)("<div />").addClass("preroll-overlay").attr('data-preroll', '');
-      this._$clickOverlay.append(_loader2.default).find('svg path').css('fill', '#fff');
+      this._$clickOverlay.append(_loader2.default);
       this._$clickOverlay.find('svg').addClass('preroll-overlay-icon').attr('data-preroll', '');
       this.$el.append(this._$adContainer);
       this.$el.append(this._$clickOverlay);
