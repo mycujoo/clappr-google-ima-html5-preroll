@@ -341,7 +341,7 @@ export default class ClapprGoogleImaHtml5PrerollPlugin extends UICorePlugin {
       this.core.configure({
         playback: playbackOptions,
         sources: this.core.options.sources,
-        autoPlay: this.core.options.autoPlay,
+        autoPlay: true,
       })
     })
   }
