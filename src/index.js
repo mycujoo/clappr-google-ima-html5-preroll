@@ -282,7 +282,10 @@ export default class ClapprGoogleImaHtml5PrerollPlugin extends UICorePlugin {
     // google.ima.AdError : https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis#ima.AdError
     // console.log('onAdError: ' + adErrorEvent.getError())
     this._imaEvent('ad_error', adErrorEvent)
-    this._playVideoContent()
+
+    if (this._autostart) {
+      this._playVideoContent()
+    }
   }
 
   _imaEvent(eventName, e) {
