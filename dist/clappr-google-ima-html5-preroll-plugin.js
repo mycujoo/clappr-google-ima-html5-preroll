@@ -718,10 +718,7 @@ var ClapprGoogleImaHtml5PrerollPlugin = function (_UICorePlugin) {
       // google.ima.AdError : https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis#ima.AdError
       // console.log('onAdError: ' + adErrorEvent.getError())
       this._imaEvent('ad_error', adErrorEvent);
-
-      if (this._autostart) {
-        this._playVideoContent();
-      }
+      this._playVideoContent(this._autostart);
     }
   }, {
     key: '_imaEvent',
@@ -777,6 +774,8 @@ var ClapprGoogleImaHtml5PrerollPlugin = function (_UICorePlugin) {
     value: function _playVideoContent() {
       var _this6 = this;
 
+      var autoPlay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
       process.nextTick(function () {
         _this6._enableControls();
         _this6.$el.hide
@@ -788,7 +787,7 @@ var ClapprGoogleImaHtml5PrerollPlugin = function (_UICorePlugin) {
         _this6.core.configure({
           playback: playbackOptions,
           sources: _this6.core.options.sources,
-          autoPlay: true
+          autoPlay: autoPlay
         });
       });
     }

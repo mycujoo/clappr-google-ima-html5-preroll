@@ -282,10 +282,7 @@ export default class ClapprGoogleImaHtml5PrerollPlugin extends UICorePlugin {
     // google.ima.AdError : https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis#ima.AdError
     // console.log('onAdError: ' + adErrorEvent.getError())
     this._imaEvent('ad_error', adErrorEvent)
-
-    if (this._autostart) {
-      this._playVideoContent()
-    }
+    this._playVideoContent(this._autostart)
   }
 
   _imaEvent(eventName, e) {
@@ -332,7 +329,7 @@ export default class ClapprGoogleImaHtml5PrerollPlugin extends UICorePlugin {
     }
   }
 
-  _playVideoContent() {
+  _playVideoContent(autoPlay = true) {
     process.nextTick(() => {
       this._enableControls()
       this.$el.hide()
@@ -344,7 +341,7 @@ export default class ClapprGoogleImaHtml5PrerollPlugin extends UICorePlugin {
       this.core.configure({
         playback: playbackOptions,
         sources: this.core.options.sources,
-        autoPlay: true,
+        autoPlay,
       })
     })
   }
